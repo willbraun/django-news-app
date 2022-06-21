@@ -14,7 +14,7 @@ class Article(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    phase = models.CharField(max_length=10, choices=PHASES, default='DR')
+    phase = models.CharField(max_length=2, choices=PHASES, default='DR')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
