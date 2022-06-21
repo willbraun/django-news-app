@@ -4,14 +4,20 @@ from rest_framework import generics
 from .models import Article
 from .serializers import ArticleSerializer
 from django.db.models import Q
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from articles.permissions import IsAuthor, IsEditor
 
 
-class ArticleListApiViewPublished(generics.ListCreateAPIView):
+class ArticleListApiViewPublished(generics.ListAPIView):
     queryset = Article.objects.filter(phase='PU').order_by('-created_at')
     serializer_class = ArticleSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (AllowAny,)
+
+
+class ArticleApiCreate(generics.CreateAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = (IsAuthor,)
 
 
 class ArticleListApiViewMine(generics.ListAPIView):
