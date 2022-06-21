@@ -60,6 +60,16 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -153,3 +163,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'frontend/static/build/static'),)
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/static')
+
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'accounts.serializers.TokenSerializer',
+}
