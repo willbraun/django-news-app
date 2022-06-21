@@ -26,3 +26,9 @@ class ArticleListApiViewReview(generics.ListAPIView):
     queryset = Article.objects.filter(Q(phase='SU') | Q(phase='PU') | Q(phase='AR')).order_by('-created_at')
     serializer_class = ArticleSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class ArticleDetailApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
