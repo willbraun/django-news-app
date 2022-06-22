@@ -18,7 +18,7 @@ class IsAuthor(permissions.BasePermission):
                     return request.data.get('phase') in ['DR', 'SU']
             
         return False
-        
+
 
 class IsEditor(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):

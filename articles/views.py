@@ -25,21 +25,26 @@ class ArticleListApiViewMine(generics.ListCreateAPIView):
         serializer.save(author=self.request.user, phase='DR')
 
 
+class ArticleDetailApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = (IsAuthor,)
+
+
 class ArticleListApiViewReview(generics.ListAPIView):
     queryset = Article.objects.filter(Q(phase='SU') | Q(phase='PU') | Q(phase='AR')).order_by('-created_at')
     serializer_class = ArticleSerializer
     permission_classes = (IsEditor,)
 
 
-# Author can delete their own articles
-class ArticleDetailApiView(generics.RetrieveUpdateDestroyAPIView):
+class ArticleDetailApiViewEditor(generics.RetrieveAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    # permission_classes = (IsAuthor,IsEditor)
+    permission_classes = (IsEditor,)
 
 
 class ArticleUpdatePhaseView(generics.UpdateAPIView):
     queryset = Article.objects.all()
     serializer_class = UpdatePhaseSerializer
-    # permission_classes = (IsEditor,)
+    permission_classes = (IsEditor,)
 
