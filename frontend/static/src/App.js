@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Header from './components/Header';
 import Login from './components/Login';
 import CreateAccount from './components/CreateAccount';
 import Home from './components/Home';
@@ -25,6 +26,7 @@ function App() {
 	
 	return (
 		<>
+		{['home','myArticles','review'].includes(state.page) ? <Header key={1} appState={state} setAppState={setState}/> : undefined}
 		{pages[state.page]}
 		</>
 	);
