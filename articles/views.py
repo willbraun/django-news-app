@@ -2,27 +2,27 @@ from django.shortcuts import render
 from requests import request
 from rest_framework import generics
 from .models import Article
-from .serializers import ArticleSerializer
+from .serializers import ArticleSerializer, UpdatePhaseSerializer
 from django.db.models import Q
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from articles.permissions import IsAuthor, IsEditor
 
 
-class ArticleListApiView(generics.ListCreateAPIView):
+class ArticleListApiView(generics.ListAPIView):
     queryset = Article.objects.filter(phase='PU').order_by('-created_at')
     serializer_class = ArticleSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user, phase='DR')
+    permission_classes = (AllowAny,)
         
 
-class ArticleListApiViewMine(generics.ListAPIView):
+class ArticleListApiViewMine(generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         return Article.objects.filter(author=self.request.user).order_by('-created_at')
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user, phase='DR')
 
 
 class ArticleListApiViewReview(generics.ListAPIView):
@@ -30,14 +30,16 @@ class ArticleListApiViewReview(generics.ListAPIView):
     serializer_class = ArticleSerializer
     permission_classes = (IsEditor,)
 
+
 # Author can delete their own articles
 class ArticleDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = (IsAuthor,)
+    # permission_classes = (IsAuthor,IsEditor)
 
-# Editor can update but not delete all articles. Editor can delete articles they authored.
-class ArticleDetailApiViewEditor(generics.RetrieveUpdateAPIView):
+
+class ArticleUpdatePhaseView(generics.UpdateAPIView):
     queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-    permission_classes = (IsEditor,)
+    serializer_class = UpdatePhaseSerializer
+    # permission_classes = (IsEditor,)
+

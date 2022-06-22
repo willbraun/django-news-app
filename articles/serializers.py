@@ -8,3 +8,9 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = '__all__'
+
+
+class UpdatePhaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article 
+        fields = ('phase',)
