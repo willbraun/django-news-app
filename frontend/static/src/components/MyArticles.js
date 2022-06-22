@@ -1,8 +1,8 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { handleError } from './../helpers';
 import Article from './Article';
 
-const MyArticles = ({appState, setAppState}) => {
+const MyArticles = () => {
     const [state, setState] = useState({
         articles: [],
     })

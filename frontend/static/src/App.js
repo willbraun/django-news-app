@@ -17,16 +17,16 @@ function App() {
 	const [state, setState] = useState(defaultState);
 
 	const pages = {
-		login: <Login appState={state} setAppState={setState}/>,
-		createAccount: <CreateAccount appState={state} setAppState={setState}/>,
-		home: <Home appState={state} setAppState={setState}/>,
-		myArticles: <MyArticles appState={state} setAppState={setState}/>,
-		review: <Review appState={state} setAppState={setState}/>,
+		login: <Login key={1} appState={state} setAppState={setState}/>,
+		createAccount: <CreateAccount key={1} appState={state} setAppState={setState}/>,
+		home: <Home key={1} appState={state} setAppState={setState}/>,
+		myArticles: <MyArticles key={1} appState={state} setAppState={setState}/>,
+		review: <Review key={1} appState={state} setAppState={setState}/>,
 	}
 	
 	return (
 		<>
-		{['home','myArticles','review'].includes(state.page) ? <Header key={1} appState={state} setAppState={setState}/> : undefined}
+		{['home','myArticles','review'].includes(state.page) ? <Header key={0} appState={state} setAppState={setState}/> : undefined}
 		{pages[state.page]}
 		</>
 	);

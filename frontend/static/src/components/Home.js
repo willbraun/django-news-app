@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { handleError } from './../helpers';
 import Article from './Article';
 
-const Home = ({appState, setAppState}) => {
+const Home = () => {
     const [state, setState] = useState({
         articles: [],
     })
