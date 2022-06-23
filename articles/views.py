@@ -5,14 +5,14 @@ from .models import Article
 from .serializers import ArticleSerializer, UpdatePhaseSerializer
 from django.db.models import Q
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
-from articles.permissions import IsAuthor, IsEditor
+from articles.permissions import IsAuthorOrReadOnly, IsEditor
 
 
 class ArticleListApiView(generics.ListAPIView):
     queryset = Article.objects.filter(phase='PU').order_by('-created_at')
     serializer_class = ArticleSerializer
     permission_classes = (AllowAny,)
-        
+
 
 class ArticleListApiViewMine(generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
@@ -22,13 +22,13 @@ class ArticleListApiViewMine(generics.ListCreateAPIView):
         return Article.objects.filter(author=self.request.user).order_by('-created_at')
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user, phase='DR')
+        serializer.save(author=self.request.user)
 
 
 class ArticleDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = (IsAuthor,)
+    permission_classes = (IsAuthorOrReadOnly,)
 
 
 class ArticleListApiViewReview(generics.ListAPIView):
@@ -37,10 +37,10 @@ class ArticleListApiViewReview(generics.ListAPIView):
     permission_classes = (IsEditor,)
 
 
-class ArticleDetailApiViewEditor(generics.RetrieveAPIView):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-    permission_classes = (IsEditor,)
+# class ArticleDetailApiViewEditor(generics.RetrieveAPIView):
+#     queryset = Article.objects.all()
+#     serializer_class = ArticleSerializer
+#     permission_classes = (IsEditor,)
 
 
 class ArticleUpdatePhaseView(generics.UpdateAPIView):

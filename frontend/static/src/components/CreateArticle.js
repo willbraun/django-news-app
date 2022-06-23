@@ -58,9 +58,10 @@ const CreateArticle = ({appState}) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        console.log(e.nativeEvent.submitter.value);
         const phase = e.nativeEvent.submitter.value;
         await postArticle(phase);
-        navigate('../my-articles', {replace: true});
+        navigate('/my-articles');
     }
 
     return (
@@ -114,7 +115,7 @@ const CreateArticle = ({appState}) => {
                 </div>
 
 
-                <button type="button" onClick={() => navigate('../my-articles', {replace: true})}>Discard Draft</button>
+                <button type="button" onClick={() => navigate('/my-articles')}>Discard Draft</button>
                 <button type="submit" value="DR">Save Draft</button>
                 {appState.superUser ? 
                     <button type="submit" value="PU">Save and Publish</button> : 

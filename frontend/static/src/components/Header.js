@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { handleError } from '../helpers';

@@ -31,7 +31,7 @@ const MyArticles = () => {
         <main>
             <div className="my-articles-header">
                 <h2>My Articles</h2>
-                <button type="button" onClick={() => navigate('../my-articles/create')}>+ New Article</button>
+                <button type="button" onClick={() => navigate('../create')}>+ New Article</button>
             </div>
             {articleList}
         </main>

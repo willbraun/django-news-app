@@ -42,7 +42,7 @@ const CreateAccount = ({appState, setAppState}) => {
 
         const data = await response.json();
         Cookies.set("Authorization", `Token ${data.key}`);
-        navigate('../', {replace: true});
+        navigate('/');
         setAppState({...appState, auth: true, superUser: data.is_superuser});
     }
   
@@ -89,7 +89,7 @@ const CreateAccount = ({appState, setAppState}) => {
                         onChange={handleInput}
                     />
                     <button type="submit" className="create-account-button">Create Account</button>
-                    <button type="button" className="back-to-login" onClick={() => navigate('../login', {replace: true})}>Back to Log In</button>
+                    <button type="button" className="back-to-login" onClick={() => navigate('/login')}>Back to Log In</button>
                 </form>
             </main>
         </div>

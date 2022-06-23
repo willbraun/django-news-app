@@ -37,10 +37,9 @@ const Login = ({appState, setAppState}) => {
             throw new Error('Network response not ok!');
         }
 
-        console.log(response);
         const data = await response.json();
         Cookies.set("Authorization", `Token ${data.key}`);
-        navigate('../', {replace: true});
+        navigate('/');
         setAppState({...appState, auth: true, superUser: data.is_superuser});
     }
   
@@ -72,7 +71,7 @@ const Login = ({appState, setAppState}) => {
                     </div>
                     <button type="submit">Log In</button>
                 </form>
-                <p>Don't have an account? Click <span className="create-account-link" onClick={() => navigate('../create-account', {replace: true})}>here</span> to create one.</p>
+                <p>Don't have an account? Click <span className="create-account-link" onClick={() => navigate('/create-account')}>here</span> to create one.</p>
             </main>
         </div>
         
