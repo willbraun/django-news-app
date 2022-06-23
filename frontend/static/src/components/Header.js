@@ -1,3 +1,5 @@
+import * as React from "react";
+import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { handleError } from '../helpers';
 
@@ -22,22 +24,23 @@ const Header = ({appState, setAppState}) => {
         setAppState({...appState, auth: false, superUser: false, page: 'home'});
     }
 
-    const myArticlesButton = <button key={0} type="button" onClick={() => setAppState({...appState, page: 'myArticles'})}>My Articles</button>;
-    const reviewsButton = <button key={1} type="button" onClick={() => setAppState({...appState, page: 'review'})}>Review</button>;
-    const logInButton = <button key={2} type="button" onClick={() => setAppState({...appState, page: 'login'})}>Log In</button>;
-    const logOutButton = <button key={3} type="button" onClick={logOut}>Log Out</button>;
+    const homeLink = <Link key={0} to={'my-articles'} >My Articles</Link>;
+    const myArticlesLink = <Link key={1} to={'my-articles'} >My Articles</Link>;
+    const reviewsLink = <Link key={2} to={'review'} >Review</Link>;
+    const logInLink = <Link key={3} to={'login'}>Login</Link>;
+    const logOutButton = <button key={4} type="button" onClick={logOut}>Log Out</button>;
 
     const setHeaderOptions = () => {
         const results = [];
         
         if (appState.superUser) {
-            results.push(myArticlesButton, reviewsButton, logOutButton);
+            results.push(myArticlesLink, reviewsLink, logOutButton);
         }
         else if (appState.auth) {
-            results.push(myArticlesButton, logOutButton);
+            results.push(myArticlesLink, logOutButton);
         }
         else {
-            results.push(logInButton);
+            results.push(logInLink);
         }
 
         return results;

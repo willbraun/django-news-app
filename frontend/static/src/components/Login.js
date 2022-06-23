@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import * as React from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { handleError } from './../helpers';
 import './../styles/login.css'
@@ -8,6 +10,8 @@ const Login = ({appState, setAppState}) => {
         username: '',
         password: '',
     })
+
+    let navigate = useNavigate();
 
     const handleInput = (e) => {
         const {name, value} = e.target;
@@ -37,7 +41,9 @@ const Login = ({appState, setAppState}) => {
         console.log(response);
         const data = await response.json();
         Cookies.set("Authorization", `Token ${data.key}`);
-        setAppState({...appState, auth: true, superUser: data.is_superuser, page: 'home'})
+        navigate('../', {replace: true});
+        setAppState({...appState, auth: true, superUser: data.is_superuser});
+        // setAppState({...appState, auth: true, superUser: data.is_superuser, page: 'home'})
     }
   
     return (
@@ -69,6 +75,7 @@ const Login = ({appState, setAppState}) => {
                     <button type="submit">Log In</button>
                 </form>
                 <p>Don't have an account? Click <span className="create-account-link" onClick={() => setAppState({...appState, page: 'createAccount'})}>here</span> to create one.</p>
+                {/* <p>Don't have an account? Click <span className="create-account-link" onClick={() => setAppState({...appState, page: 'createAccount'})}>here</span> to create one.</p> */}
             </main>
         </div>
         

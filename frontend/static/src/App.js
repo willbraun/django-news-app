@@ -12,7 +12,7 @@ function App() {
 	const defaultState = {
 		auth: false,
 		superUser: false,
-		page: 'home',
+		page: 'home', // Remove this and pages object when all routing works
 	}
 
 	const [state, setState] = useState(defaultState);
@@ -27,8 +27,7 @@ function App() {
 	
 	return (
 		<>
-			<Header key={0} appState={state} setAppState={setState}/>
-			<ReactRouter />
+			<ReactRouter appState={state} setAppState={setState}/>
 
 
 		{/* {['home','myArticles','review'].includes(state.page) ?  */}

@@ -8,14 +8,15 @@ import MyArticles from './MyArticles';
 import Review from './Review';
 
 
-const ReactRouter = () => {
+const ReactRouter = ({appState, setAppState}) => {
 
 
     return (
         <BrowserRouter>
-            <Routes>
+            <Header key={0} appState={appState} setAppState={setAppState}/>
+            <Routes key={1}>
                 <Route path='/' element={<Home />}/>
-                <Route path='/login' element={<Login />}/>
+                <Route path='/login' element={<Login appState={appState} setAppState={setAppState}/>}/>
                 <Route path='/create-account' element={<CreateAccount />}/>
                 <Route path='/my-articles' element={<MyArticles />}>
                     {/* <Route path='/create' element={<CreateArticle />}/> */}
