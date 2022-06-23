@@ -32,7 +32,7 @@ class ArticleDetailApiView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ArticleListApiViewReview(generics.ListAPIView):
-    queryset = Article.objects.filter(Q(phase='SU') | Q(phase='PU') | Q(phase='AR')).order_by('-created_at')
+    queryset = Article.objects.filter(Q(phase='SU') | Q(phase='PU')).order_by('-created_at')
     serializer_class = ArticleSerializer
     permission_classes = (IsEditor,)
 

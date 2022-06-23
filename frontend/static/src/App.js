@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReactRouter from './components/ReactRouter';
 import Header from './components/Header';
 import Login from './components/Login';
 import CreateAccount from './components/CreateAccount';
@@ -26,8 +27,14 @@ function App() {
 	
 	return (
 		<>
-		{['home','myArticles','review'].includes(state.page) ? <Header key={0} appState={state} setAppState={setState}/> : undefined}
-		{pages[state.page]}
+			<Header key={0} appState={state} setAppState={setState}/>
+			<ReactRouter />
+
+
+		{/* {['home','myArticles','review'].includes(state.page) ?  */}
+		
+		 {/* : undefined}
+		{pages[state.page]} */}
 		</>
 	);
 }

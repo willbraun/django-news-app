@@ -46,10 +46,10 @@ const Header = ({appState, setAppState}) => {
     const headers = setHeaderOptions();
 
     return (
-        <>
+        <nav>
             <h1>Food News</h1>
             {headers}
-        </>
+        </nav>
     )
 }
 
