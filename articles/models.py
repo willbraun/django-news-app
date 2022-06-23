@@ -26,7 +26,7 @@ class Article(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='articles/images/')
     category = models.CharField(max_length=2, choices=CATEGORIES, default='RC')
-    phase = models.CharField(max_length=2, choices=PHASES, default='DR')
+    phase = models.CharField(max_length=2, choices=PHASES)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
