@@ -24,7 +24,7 @@ const Header = ({appState, setAppState}) => {
         setAppState({...appState, auth: false, superUser: false, page: 'home'});
     }
 
-    const homeLink = <Link key={0} to={'my-articles'} >My Articles</Link>;
+    const homeLink = <Link key={0} to={''} >Home</Link>;
     const myArticlesLink = <Link key={1} to={'my-articles'} >My Articles</Link>;
     const reviewsLink = <Link key={2} to={'review'} >Review</Link>;
     const logInLink = <Link key={3} to={'login'}>Login</Link>;
@@ -34,10 +34,10 @@ const Header = ({appState, setAppState}) => {
         const results = [];
         
         if (appState.superUser) {
-            results.push(myArticlesLink, reviewsLink, logOutButton);
+            results.push(homeLink, myArticlesLink, reviewsLink, logOutButton);
         }
         else if (appState.auth) {
-            results.push(myArticlesLink, logOutButton);
+            results.push(homeLink, myArticlesLink, logOutButton);
         }
         else {
             results.push(logInLink);

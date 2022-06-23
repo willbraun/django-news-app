@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { handleError } from './../helpers';
 import './../styles/login.css'
@@ -74,8 +74,7 @@ const Login = ({appState, setAppState}) => {
                     </div>
                     <button type="submit">Log In</button>
                 </form>
-                <p>Don't have an account? Click <span className="create-account-link" onClick={() => setAppState({...appState, page: 'createAccount'})}>here</span> to create one.</p>
-                {/* <p>Don't have an account? Click <span className="create-account-link" onClick={() => setAppState({...appState, page: 'createAccount'})}>here</span> to create one.</p> */}
+                <p>Don't have an account? Click <span className="create-account-link" onClick={() => navigate('../create-account', {replace: true})}>here</span> to create one.</p>
             </main>
         </div>
         

@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from '../App';
 import Home from './Home';
 import Login from './Login';
 import Header from './Header';
@@ -17,7 +16,7 @@ const ReactRouter = ({appState, setAppState}) => {
             <Routes key={1}>
                 <Route path='/' element={<Home />}/>
                 <Route path='/login' element={<Login appState={appState} setAppState={setAppState}/>}/>
-                <Route path='/create-account' element={<CreateAccount />}/>
+                <Route path='/create-account' element={<CreateAccount appState={appState} setAppState={setAppState}/>}/>
                 <Route path='/my-articles' element={<MyArticles />}>
                     {/* <Route path='/create' element={<CreateArticle />}/> */}
                     {/* <Route path=':id' element={<ArticleDetail />}/> */}

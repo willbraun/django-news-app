@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { handleError } from "../helpers";
 import './../styles/createaccount.css';
@@ -10,6 +12,8 @@ const CreateAccount = ({appState, setAppState}) => {
         password1: '',
         password2: '',
     })
+
+    const navigate = useNavigate();
 
     const handleInput = (e) => {
         const {name, value} = e.target;
@@ -38,7 +42,9 @@ const CreateAccount = ({appState, setAppState}) => {
 
         const data = await response.json();
         Cookies.set("Authorization", `Token ${data.key}`);
-        setAppState({...appState, auth: true, superUser: data.is_superuser, page: 'home'});
+        navigate('../', {replace: true});
+        setAppState({...appState, auth: true, superUser: data.is_superuser});
+        // setAppState({...appState, auth: true, superUser: data.is_superuser, page: 'home'});
     }
   
     return (
@@ -84,7 +90,7 @@ const CreateAccount = ({appState, setAppState}) => {
                         onChange={handleInput}
                     />
                     <button type="submit" className="create-account-button">Create Account</button>
-                    <button type="button" className="back-to-login" onClick={() => setAppState({...appState, page: 'login'})}>Back to Log In</button>
+                    <button type="button" className="back-to-login" onClick={() => navigate('../login', {replace: true})}>Back to Log In</button>
                 </form>
             </main>
         </div>
