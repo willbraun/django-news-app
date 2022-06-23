@@ -9,7 +9,6 @@ const CreateArticle = ({appState}) => {
         body: '',
         image: null,
         category: '',
-        phase: '',
     }
 
     const [state, setState] = useState(blank);
@@ -38,14 +37,13 @@ const CreateArticle = ({appState}) => {
     }
 
     const postArticle = async (phase) => {
-        const newState = {...state, phase: phase}
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': Cookies.get('csrftoken'),
             },
-            body: JSON.stringify(newState),
+            body: JSON.stringify({...state, phase: phase}),
         }
 
         const response = await fetch('/api_v1/articles/mine/', options).catch(handleError);
@@ -57,12 +55,10 @@ const CreateArticle = ({appState}) => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        let phase = e.target.getAttribute('phase');
+        const phase = e.nativeEvent.submitter.value;
         postArticle(phase);
         navigate('../my-articles', {replace: true});
     }
-
-    // handle submit
 
     return (
         <main>
@@ -100,22 +96,26 @@ const CreateArticle = ({appState}) => {
                 </div>
                 <div>
                     <label htmlFor="category">Category</label>
-                    <select name="category" id="category" required> 
-                        <option value="">Select a category</option>
-                        <option value="RC">Recipe</option>
-                        <option value="RS">Restaurants</option>
-                        <option value="FS">Food Science</option>
-                        <option value="DB">Debate</option>
-                        <option value="ST">Stories</option>
+                    <select 
+                        name="category" 
+                        id="category" 
+                        required
+                        onChange={handleInput}> 
+                            <option value="">Select a category</option>
+                            <option value="RC">Recipe</option>
+                            <option value="RS">Restaurants</option>
+                            <option value="FS">Food Science</option>
+                            <option value="DB">Debate</option>
+                            <option value="ST">Stories</option>
                     </select>
                 </div>
 
 
                 <button type="button" onClick={() => navigate('../my-articles', {replace: true})}>Discard Draft</button>
-                <button type="submit" phase="DR">Save Draft</button>
+                <button type="submit" value="DR">Save Draft</button>
                 {appState.superUser ? 
-                    <button type="submit" phase="PU">Save and Publish</button> : 
-                    <button type="submit" phase="SU">Save and Submit</button>
+                    <button type="submit" value="PU">Save and Publish</button> : 
+                    <button type="submit" value="SU">Save and Submit</button>
                 }
             </form>
 
