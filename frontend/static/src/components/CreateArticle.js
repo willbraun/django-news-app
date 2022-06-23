@@ -59,6 +59,20 @@ const CreateArticle = () => {
                 <input type="file" name="image" onChange={handleImage} />
                 {state.image && <img src={preview} alt='article' />}
             </div>
+            <div>
+                <label htmlFor="category">Category</label>
+                <select 
+                    name="category"
+                    id="category"
+                    required
+                >
+                    {/* list out option elements */}
+
+                </select>
+            </div>
+            <button type="button">Discard Draft</button>
+            <button type="submit">Save Draft</button>
+            <button type="submit">Save and Submit</button>
         </form>
     )
 }
