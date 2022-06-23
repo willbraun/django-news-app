@@ -37,13 +37,16 @@ const CreateArticle = ({appState}) => {
     }
 
     const postArticle = async (phase) => {
+        const formData = new FormData();
+        Object.entries(state).forEach(entry => formData.append(entry[0], entry[1]));
+        formData.append('phase', phase);
+        
         const options = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
                 'X-CSRFToken': Cookies.get('csrftoken'),
             },
-            body: JSON.stringify({...state, phase: phase}),
+            body: formData,
         }
 
         const response = await fetch('/api_v1/articles/mine/', options).catch(handleError);
@@ -53,10 +56,10 @@ const CreateArticle = ({appState}) => {
         }
     }
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         const phase = e.nativeEvent.submitter.value;
-        postArticle(phase);
+        await postArticle(phase);
         navigate('../my-articles', {replace: true});
     }
 
