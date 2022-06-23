@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { handleError } from './../helpers';
 import Article from './Article';
 
@@ -6,6 +7,8 @@ const MyArticles = () => {
     const [state, setState] = useState({
         articles: [],
     })
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getMyArticles = async () => {
@@ -26,6 +29,10 @@ const MyArticles = () => {
     
     return (
         <main>
+            <div className="my-articles-header">
+                <h2>My Articles</h2>
+                <button type="button" onClick={() => navigate('../my-articles/create')}>+ New Article</button>
+            </div>
             {articleList}
         </main>
     )
