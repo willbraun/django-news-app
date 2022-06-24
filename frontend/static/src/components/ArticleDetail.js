@@ -29,7 +29,7 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
         getDetails(id);
     }, [])
 
-    const deleteArticle = async (id) => {
+    const deleteArticle = async () => {
         const options = {
             method: 'DELETE',
             headers: {
@@ -66,6 +66,27 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
         setState(data);
     }
 
+    const editorUpdatePhase = async (phase) => {
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify({phase: phase}),
+        }
+
+        const response = await fetch(`/api_v1/articles/review/${id}/`, options).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network request not ok!');
+        }
+
+        const data = await response.json();
+        setState(data);
+        navigate(-1);
+    }
+
     if (errorMessage) {
         return <div>{errorMessage}</div>
     }
@@ -75,11 +96,11 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
     }
 
     const editButton = <Link key={0} to={'edit'}>Edit</Link>;
-    const deleteButton = <button key={1} type="button" onClick={() => deleteArticle(id)}>Delete</button>;
-    const submitButton = <button key={2} type="button" onClick={() => submitArticle(id)}>Submit</button>;
-    const rejectButton = <button key={3} type="button">Reject</button>;
-    const publishButton = <button key={4} type="button">Publish</button>;
-    const archiveButton = <button key={5} type="button">Archive</button>;
+    const deleteButton = <button key={1} type="button" onClick={() => deleteArticle()}>Delete</button>;
+    const submitButton = <button key={2} type="button" onClick={() => submitArticle()}>Submit</button>;
+    const rejectButton = <button key={3} type="button" onClick={() => editorUpdatePhase('RE')}>Reject</button>;
+    const publishButton = <button key={4} type="button" onClick={() => editorUpdatePhase('PU')}>Publish</button>;
+    const archiveButton = <button key={5} type="button" onClick={() => editorUpdatePhase('AR')}>Archive</button>;
 
     const setButtons = () => {
         if (auth && authorId === state.author && ['DR','RE'].includes(state.phase)) {

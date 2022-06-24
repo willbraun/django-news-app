@@ -26,7 +26,7 @@ const Review = () => {
     
     return (
         <main>
-            <div>Review</div>
+            <h2>Review</h2>
             {articleList}
         </main>
     )

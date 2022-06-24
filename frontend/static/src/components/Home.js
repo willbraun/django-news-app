@@ -26,7 +26,7 @@ const Home = () => {
 
     return (
         <main>
-            <div>Home</div>
+            <h2>Home</h2>
             {articleList}
         </main>
     )

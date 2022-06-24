@@ -28,6 +28,9 @@ class IsEditor(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
+        if request.data.get('phase') == 'PU' and obj.phase == 'DR':
+            return True
+
         if request.data.get('phase') in ['RE','PU'] and obj.phase == 'SU':
             return True
 
