@@ -32,21 +32,27 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
 
     const editButton = <Link key={0} to={'edit'}>Edit</Link>;
     const deleteButton = <button key={1} type="button">Delete</button>;
-    const rejectButton = <button key={2} type="button">Reject</button>;
-    const publishButton = <button key={3} type="button">Publish</button>;
-    const archiveButton = <button key={4} type="button">Archive</button>;
+    const submitButton = <button key={2} type="button">Submit</button>;
+    const rejectButton = <button key={3} type="button">Reject</button>;
+    const publishButton = <button key={4} type="button">Publish</button>;
+    const archiveButton = <button key={5} type="button">Archive</button>;
 
     const setButtons = () => {
-        if (auth && 
-            authorId === state.author && 
-            ['DR','RE'].includes(state.phase)) {
-            return [editButton, deleteButton];
+        if (auth && authorId === state.author && ['DR','RE'].includes(state.phase)) {
+            if (superUser){
+                return [deleteButton, editButton, submitButton];
+            }
+            else {
+                return [deleteButton, editButton, publishButton];
+            }   
         }
-        else if (auth && superUser && state.phase === 'SU') {
-            return [rejectButton, publishButton];
-        }
-        else if (auth && superUser && state.phase === 'PU') {
-            return archiveButton;
+        else if (auth && superUser){
+            if (state.phase === 'SU') {
+                return [rejectButton, publishButton]; 
+            }
+            else if (state.phase === 'PU') {
+                return archiveButton;
+            }
         }
         else {
             return null;
@@ -72,7 +78,7 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
     return (
         <>
         <Routes>
-            <Route path='edit' element={<EditArticle {...state}/>}/>
+            <Route path='edit' element={<EditArticle superUser={superUser} detailState={state} setDetailState={setState}/>}/>
         </Routes>
 
         {location.pathname.endsWith(`/article/${state.id}/edit`) ? undefined : articleDetailHTML}

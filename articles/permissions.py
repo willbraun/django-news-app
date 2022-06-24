@@ -11,7 +11,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         if obj.phase in ['DR','RE']:
             if request.method == 'DELETE':
                 return True
-            if request.method == 'PUT':
+            if request.method in ['PUT','PATCH']:
                 if request.user.is_superuser:
                     return request.data.get('phase') in ['DR', 'PU']
                 else:

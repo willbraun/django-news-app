@@ -58,7 +58,6 @@ const CreateArticle = ({appState}) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log(e.nativeEvent.submitter.value);
         const phase = e.nativeEvent.submitter.value;
         await postArticle(phase);
         navigate('/my-articles');
