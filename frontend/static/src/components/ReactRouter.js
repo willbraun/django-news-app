@@ -7,7 +7,6 @@ import MyArticles from './MyArticles';
 import CreateArticle from './CreateArticle';
 import Review from './Review';
 import ArticleDetail from './ArticleDetail';
-import EditArticle from './EditArticle';
 
 
 const ReactRouter = ({appState, setAppState}) => {
@@ -26,13 +25,7 @@ const ReactRouter = ({appState, setAppState}) => {
                         <Route path='create' element={<CreateArticle appState={appState}/>}/>
                     </Route>
                     <Route path='review' element={<Review />}/>
-                    <Route
-                        path='*'
-                        element={
-                            <main style={{ padding: "1rem" }}>
-                            <p>Page not found</p>
-                            </main>
-                        }
+                    <Route path='*' element={<p>Page not found</p>}
                     />
                 </Route>
             </Routes>
