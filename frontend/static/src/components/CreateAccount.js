@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { handleError } from "../helpers";
 import './../styles/createaccount.css';
@@ -89,7 +89,7 @@ const CreateAccount = ({appState, setAppState}) => {
                         onChange={handleInput}
                     />
                     <button type="submit" className="create-account-button">Create Account</button>
-                    <button type="button" className="back-to-login" onClick={() => navigate('/login')}>Back to Log In</button>
+                    <Link className="back-to-login" to={'/login'}>Back to login</Link>
                 </form>
             </main>
         </div>

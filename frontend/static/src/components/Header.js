@@ -26,7 +26,7 @@ const Header = ({appState, setAppState}) => {
     const homeLink = <Link key={0} to={''} >Home</Link>;
     const myArticlesLink = <Link key={1} to={'my-articles'} >My Articles</Link>;
     const reviewsLink = <Link key={2} to={'review'} >Review</Link>;
-    const logInLink = <Link key={3} to={'login'}>Login</Link>;
+    const logInLink = <Link key={3} to={'login'}>Log In</Link>;
     const logOutButton = <button key={4} type="button" onClick={logOut}>Log Out</button>;
 
     const setHeaderOptions = () => {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { handleError } from './../helpers';
 import './../styles/login.css'
@@ -71,7 +71,7 @@ const Login = ({appState, setAppState}) => {
                     </div>
                     <button type="submit">Log In</button>
                 </form>
-                <p>Don't have an account? Click <span className="create-account-link" onClick={() => navigate('/create-account')}>here</span> to create one.</p>
+                <p>Don't have an account? Click <Link className="create-account-link" to={'/create-account'}>here</Link> to create one.</p> 
             </main>
         </div>
         

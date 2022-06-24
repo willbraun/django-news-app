@@ -7,7 +7,8 @@ const Article = ({id, title, author_username, phase, image}) => {
             <article>
                 <p>{title}</p>
                 <p>By: {author_username}</p>
-                <p>Phase: {phase}</p>
+                <p>Phase: {phase}</p> 
+                {/* keep phase temporary here until I group by it on each page */}
                 <img src={image} alt={title} />
             </article>
         </Link>

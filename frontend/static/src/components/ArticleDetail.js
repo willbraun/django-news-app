@@ -1,12 +1,15 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import { handleError, phases, categories } from '../helpers';
+import EditArticle from './EditArticle';
 
 
 const ArticleDetail = ({auth, superUser, authorId}) => {
     const [state, setState] = useState(null);
 
     const { id } = useParams();
+    const location = useLocation();
 
     useEffect(() => {
         const getDetails = async (id) => {
@@ -27,7 +30,7 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
         return <div>Fetching data...</div>
     }
 
-    const editButton = <button key={0} type="button">Edit</button>;
+    const editButton = <Link key={0} to={'edit'}>Edit</Link>;
     const deleteButton = <button key={1} type="button">Delete</button>;
     const rejectButton = <button key={2} type="button">Reject</button>;
     const publishButton = <button key={3} type="button">Publish</button>;
@@ -52,10 +55,7 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
 
     const buttonList = setButtons();
 
-    // preview vs edit html
-    // destructure appstate in other places
-
-    return (
+    const articleDetailHTML = (
         <main>
             <div>
                 <h2>{state.title}</h2>
@@ -67,6 +67,16 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
             <img src={state.image} alt={state.title} />
             <p>{state.body}</p>
         </main>
+    )
+
+    return (
+        <>
+        <Routes>
+            <Route path='edit' element={<EditArticle {...state}/>}/>
+        </Routes>
+
+        {location.pathname.endsWith(`/article/${state.id}/edit`) ? undefined : articleDetailHTML}
+        </>
     )
 }
 
