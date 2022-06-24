@@ -9,9 +9,20 @@ from articles.permissions import IsAuthorOrReadOnly, IsEditor
 
 
 class ArticleListApiView(generics.ListAPIView):
-    queryset = Article.objects.filter(phase='PU').order_by('-created_at')
     serializer_class = ArticleSerializer
     permission_classes = (AllowAny,)
+
+    def get_queryset(self):
+        try:
+            this_category = self.kwargs['category'].upper()
+
+            def tuple_first(this_tuple):
+                return this_tuple[0]
+
+            if this_category in list(map(tuple_first, Article.CATEGORIES)):
+                return Article.objects.filter(category=this_category).filter(phase='PU').order_by('-created_at')
+        except:
+            return Article.objects.filter(phase='PU').order_by('-created_at')
 
 
 class ArticleListApiViewMine(generics.ListCreateAPIView):

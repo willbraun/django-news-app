@@ -27,6 +27,13 @@ const Home = () => {
     return (
         <main>
             <h2>Home</h2>
+            <div>
+                <button type="button">Recipes</button>
+                <button type="button">Restaurants</button>
+                <button type="button">Food Science</button>
+                <button type="button">Debate</button>
+                <button type="button">Stories</button>
+            </div>
             {articleList}
         </main>
     )

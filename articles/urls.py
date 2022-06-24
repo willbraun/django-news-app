@@ -8,5 +8,6 @@ urlpatterns = [
     path('articles/review/', ArticleListApiViewReview.as_view(), name='article_list_review'),
     path('articles/<int:pk>/', ArticleDetailApiView.as_view(), name='article_detail'),
     path('articles/mine/', ArticleListApiViewMine.as_view(), name='article_list_mine'),
+    path('articles/<str:category>/', ArticleListApiView.as_view(), name='article_list_filtered'),
     path('articles/', ArticleListApiView.as_view(), name='article_list'),
 ]
