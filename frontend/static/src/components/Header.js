@@ -30,19 +30,15 @@ const Header = ({appState, setAppState}) => {
     const logOutButton = <button key={4} type="button" onClick={logOut}>Log Out</button>;
 
     const setHeaderOptions = () => {
-        const results = [];
-        
         if (appState.superUser) {
-            results.push(homeLink, myArticlesLink, reviewsLink, logOutButton);
+            return [homeLink, myArticlesLink, reviewsLink, logOutButton];
         }
         else if (appState.auth) {
-            results.push(homeLink, myArticlesLink, logOutButton);
+            return [homeLink, myArticlesLink, logOutButton];
         }
         else {
-            results.push(logInLink);
+            return logInLink;
         }
-
-        return results;
     }
 
     const headers = setHeaderOptions();

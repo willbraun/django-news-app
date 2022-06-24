@@ -19,7 +19,7 @@ const ReactRouter = ({appState, setAppState}) => {
                     <Route index element={<Home />}/>
                     <Route path='login' element={<Login appState={appState} setAppState={setAppState}/>}/>
                     <Route path='create-account' element={<CreateAccount appState={appState} setAppState={setAppState}/>}/>
-                    <Route path='article/:id' element={<ArticleDetail appState={appState}/>}/>
+                    <Route path='article/:id' element={<ArticleDetail {...appState}/>}/>
                     <Route path='my-articles' >
                         <Route index element={<MyArticles appState={appState}/>}/>
                         <Route path='create' element={<CreateArticle appState={appState}/>}/>

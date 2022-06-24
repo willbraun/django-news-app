@@ -38,7 +38,6 @@ const Login = ({appState, setAppState}) => {
         }
 
         const data = await response.json();
-        console.log(data);
         Cookies.set("Authorization", `Token ${data.key}`);
         navigate('/');
         setAppState({...appState, auth: true, superUser: data.is_superuser, authorId: data.id});
