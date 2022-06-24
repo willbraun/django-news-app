@@ -49,45 +49,52 @@ const CreateAccount = ({appState, setAppState}) => {
     return (
         <div className="auth-background">
             <main className="create-account-box">
-                <h1>Food News</h1>
                 <h2>Create Account</h2>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="username">Username</label> 
-                    <input 
-                        name="username" 
-                        value={state.username} 
-                        type="text" 
-                        id="username" 
-                        required 
-                        onChange={handleInput}
-                    />
-                    <label htmlFor="email">Email</label> 
-                    <input 
-                        name="email" 
-                        value={state.email} 
-                        type="text" 
-                        id="email" 
-                        required 
-                        onChange={handleInput}
-                    />
-                    <label htmlFor="password1">Password</label> 
-                    <input 
-                        name="password1" 
-                        value={state.password1} 
-                        type="password" 
-                        id="password1" 
-                        required 
-                        onChange={handleInput}
-                    />
-                    <label htmlFor="password2">Confirm Password</label> 
-                    <input 
-                        name="password2" 
-                        value={state.password2} 
-                        type="password" 
-                        id="password2" 
-                        required 
-                        onChange={handleInput}
-                    />
+                    <div>
+                        <label htmlFor="username">Username</label> 
+                        <input 
+                            name="username" 
+                            value={state.username} 
+                            type="text" 
+                            id="username" 
+                            required 
+                            onChange={handleInput}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label> 
+                        <input 
+                            name="email" 
+                            value={state.email} 
+                            type="text" 
+                            id="email" 
+                            required 
+                            onChange={handleInput}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password1">Password</label> 
+                        <input 
+                            name="password1" 
+                            value={state.password1} 
+                            type="password" 
+                            id="password1" 
+                            required 
+                            onChange={handleInput}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password2">Confirm Password</label> 
+                        <input 
+                            name="password2" 
+                            value={state.password2} 
+                            type="password" 
+                            id="password2" 
+                            required 
+                            onChange={handleInput}
+                        />
+                    </div>
                     <button type="submit" className="create-account-button">Create Account</button>
                     <Link className="back-to-login" to={'/login'}>Back to login</Link>
                 </form>

@@ -46,7 +46,6 @@ const Login = ({appState, setAppState}) => {
     return (
         <div className="auth-background">
             <main className="login-box">
-                <h1>Food News</h1>
                 <h2>Log In</h2>
                 <form onSubmit={handleSubmit}>
                     <div>

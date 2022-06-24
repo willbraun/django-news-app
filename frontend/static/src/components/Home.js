@@ -16,11 +16,22 @@ const Home = () => {
             }
     
             const data = await response.json();
-            setState({...state, articles: data})
+            setState({...state, articles: data});
         }
 
         getPubArticles();
     }, [])
+
+    const getPubCatArticles = async (category) => {
+        const response = await fetch(`/api_v1/articles/${category}`).catch(handleError);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok!');
+        }
+
+        const data = await response.json();
+        setState({...state, articles: data});
+    }
 
     const articleList = state.articles.map(article => <Article key={article.id} {...article}/>)
 
@@ -28,11 +39,12 @@ const Home = () => {
         <main>
             <h2>Home</h2>
             <div>
-                <button type="button">Recipes</button>
-                <button type="button">Restaurants</button>
-                <button type="button">Food Science</button>
-                <button type="button">Debate</button>
-                <button type="button">Stories</button>
+                <button type="button" onClick={() => getPubCatArticles('RC')}>Recipes</button>
+                <button type="button" onClick={() => getPubCatArticles('RS')}>Restaurants</button>
+                <button type="button" onClick={() => getPubCatArticles('FS')}>Food Science</button>
+                <button type="button" onClick={() => getPubCatArticles('DB')}>Debate</button>
+                <button type="button" onClick={() => getPubCatArticles('ST')}>Stories</button>
+                <button type="button" onClick={() => getPubCatArticles('')}>All</button>
             </div>
             {articleList}
         </main>

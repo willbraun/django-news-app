@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { handleError } from '../helpers';
+import './../styles/header.css';
 
 const Header = ({appState, setAppState}) => {
 
@@ -37,7 +38,7 @@ const Header = ({appState, setAppState}) => {
             return [homeLink, myArticlesLink, logOutButton];
         }
         else {
-            return logInLink;
+            return [homeLink, logInLink];
         }
     }
 
