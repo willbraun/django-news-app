@@ -6,10 +6,12 @@ const Article = ({id, title, author_username, phase, image}) => {
     return (
         <Link to={`/article/${id}`}>
             <article className="article">
-                <p>{title}</p>
-                <p>By: {author_username}</p>
-                <p>Phase: {phase}</p> 
                 <img src={image} alt={title} />
+                <div className="article-content">
+                    <p className="title">{title}</p>
+                    <p className="author">By: {author_username}</p>
+                    <p>Phase: {phase}</p> 
+                </div>
             </article>
         </Link>
     )

@@ -38,16 +38,20 @@ const Home = () => {
 
     return (
         <main className="main-home">
-            <h2>Home</h2>
-            <div className="category-row">
-                <button type="button" onClick={() => getPubCatArticles('RC')}>Recipes</button>
-                <button type="button" onClick={() => getPubCatArticles('RS')}>Restaurants</button>
-                <button type="button" onClick={() => getPubCatArticles('FS')}>Food Science</button>
-                <button type="button" onClick={() => getPubCatArticles('DB')}>Debate</button>
-                <button type="button" onClick={() => getPubCatArticles('ST')}>Stories</button>
-                <button type="button" onClick={() => getPubCatArticles('')}>All</button>
+            <div className="subheader-row">
+                <div className="home-row-content">
+                    <button type="button" onClick={() => getPubCatArticles('RC')}>Recipes</button>
+                    <button type="button" onClick={() => getPubCatArticles('RS')}>Restaurants</button>
+                    <button type="button" onClick={() => getPubCatArticles('FS')}>Food Science</button>
+                    <button type="button" onClick={() => getPubCatArticles('DB')}>Debate</button>
+                    <button type="button" onClick={() => getPubCatArticles('ST')}>Stories</button>
+                    <button type="button" onClick={() => getPubCatArticles('')}>All</button>
+                </div>
             </div>
-            {articleList}
+            <section className="section-home">
+                {articleList}
+            </section>
+            
         </main>
     )
 }

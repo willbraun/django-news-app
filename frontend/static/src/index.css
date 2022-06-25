@@ -1,5 +1,5 @@
 :root {
-	--border-color: #000;
+	--border-color: #999;
 	--light-pink: #FFD8D6;
 	--hot-pink: #EE4266;
 }
@@ -24,16 +24,19 @@ code {
 
 h1, h2 {
 	font-weight: 700;
+	margin: 0;
 }
 
 h1 {
 	font-size: 2rem;
-	margin: 0;
 }
 
 h2 {
 	font-size: 2rem;
-	margin: 1rem;
+}
+
+p {
+	margin: 0;
 }
 
 
