@@ -4,6 +4,7 @@ import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 import { handleError, phases, categories } from '../helpers';
 import Cookies from 'js-cookie';
 import EditArticle from './EditArticle';
+import { format } from 'date-fns'
 import './../styles/articledetail.css'
 
 
@@ -85,7 +86,7 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
 
         const data = await response.json();
         setState(data);
-        navigate(-1);
+        navigate('/review');
     }
 
     if (errorMessage) {
@@ -142,15 +143,13 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
                     <p className="detail-phase">{phases[state.phase]}</p>
                 }
                 <h2 className="detail-title">{state.title}</h2>
-                <p className="detail-created-at">{state.created_at}</p>
-                <p className="detail-category">Category: {categories[state.category]}</p>
-                <p className="detail-author">By {state.author_username}</p>
+                <p className="detail-info">{format(new Date(state.created_at), 'M/d/yyyy')} - {categories[state.category]} - by {state.author_username}</p>
                 
                 <div className="image-box">
                     <img src={state.image} alt={state.title} />
                 </div>
                 <p className="detail-body">{state.body}</p>
-                <p className="detail-updated-at">Last Modified: {state.updated_at}</p>
+                <p className="detail-updated-at">Last Modified: {format(new Date(state.updated_at), 'M/d/yyyy h:mm a')}</p>
             </section>
         </main>
     )

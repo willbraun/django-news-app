@@ -1,5 +1,6 @@
 .subheader-row {
     width: 100%;
+    height: 3rem;
     background-color: var(--light-pink);
     padding: 0.5rem;
 }
@@ -26,15 +27,12 @@
 }
 
 .display-articles {
-    width: var(--main-page-width);
-    margin: 1rem auto;
-}
-
-.display-articles {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 3rem;
-    max-width: var(--main-page-width);;
+    max-width: var(--main-page-width);
+    width: var(--main-page-width);
+    margin: 2rem auto;
 }
 
 

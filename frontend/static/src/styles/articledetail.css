@@ -1,11 +1,16 @@
 .article-detail {
     position: relative;
     width: var(--detail-page-width);
-    margin: 1rem auto;
+    margin: 2rem auto;
 }
 
 .detail-title {
     margin: 1rem 0;
+}
+
+.detail-info {
+    display: inline-block;
+    margin-bottom: 1rem;
 }
 
 .detail-phase {
