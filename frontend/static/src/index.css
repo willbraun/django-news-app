@@ -2,6 +2,7 @@
 	--border-color: #999;
 	--light-pink: #FFD8D6;
 	--hot-pink: #EE4266;
+	--main-page-width: 80%;
 }
 
 * {
@@ -28,11 +29,11 @@ h1, h2 {
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 2.2rem;
 }
 
 h2 {
-	font-size: 2rem;
+	font-size: 1.8rem;
 }
 
 p {

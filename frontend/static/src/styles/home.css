@@ -19,25 +19,6 @@
 }
 
 .home-row-content, .section-home {
-    width: 80%;
+    width: var(--main-page-width);
     margin: auto;
-}
-
-.section-home {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 3rem;
-    max-width: 80%;
-}
-
-@media (max-width: 900px) {
-    .home-row-content {
-        width: 100%;
-    }
-    
-    .section-home {
-        grid-template-columns: 1fr;
-        grid-gap: 1rem;
-        width: 70%;
-    }
 }

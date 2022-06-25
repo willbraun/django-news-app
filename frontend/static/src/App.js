@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ReactRouter from './components/ReactRouter';
 import './App.css';
+import './styles/displayarticles.css'
 
 function App() {
 	const defaultState = {

@@ -1,0 +1,29 @@
+.home-row-content,
+.my-articles-row-content {
+    width: var(--main-page-width);
+    margin: auto;
+}
+
+.section-home,
+.section-my-articles {
+    width: var(--main-page-width);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3rem;
+    max-width: var(--main-page-width);;
+}
+
+@media (max-width: 900px) {
+    .home-row-content,
+    .my-articles-row-content {
+        width: 100%;
+    }
+    
+    .section-home,
+    .section-my-articles {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        width: 70%;
+    }
+}

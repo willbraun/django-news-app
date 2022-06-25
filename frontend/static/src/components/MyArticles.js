@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { handleError } from './../helpers';
 import Article from './Article';
+import './../styles/myarticles.css'
 
 const MyArticles = () => {
     const [state, setState] = useState({
@@ -29,11 +30,16 @@ const MyArticles = () => {
     
     return (
         <main>
-            <div className="my-articles-header">
-                <h2>My Articles</h2>
-                <button type="button" onClick={() => navigate('../create')}>+ New Article</button>
+            <div className="subheader-row">
+                <div className="my-articles-row-content">
+                    <h2>My Articles</h2>
+                    <button type="button" onClick={() => navigate('../create')}>+ New Article</button>
+                    
+                </div>
             </div>
-            {articleList}
+            <section className="section-my-articles">
+                {articleList}
+            </section>
         </main>
     )
 }

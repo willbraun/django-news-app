@@ -15,7 +15,8 @@
     border: 1px solid black;
     text-align: left;
     background-color: var(--light-pink);
-    padding: 2.4rem;
+    margin: 1.2rem 0;
+    padding: 1.2rem;
     border-radius: 1.2rem;
     font-size: 1.2rem;
 }
@@ -43,6 +44,7 @@
 
 .back-to-login {
     align-self: flex-end;
+    font-size: 1rem;
 }
 
 .create-account-link {
