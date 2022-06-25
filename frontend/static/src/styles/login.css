@@ -1,34 +1,49 @@
-.login-box {
+.login-box, 
+.create-account-box {
     /* border: 1px solid var(--border-color); */
     max-width: 30rem;
-    margin: 5rem auto;
+    margin: 2rem auto 0;
     text-align: center;
     /* padding: 2rem; */
 }
 
-.login-box form {
+.login-box form, 
+.create-account-box form {
     display: flex;
     flex-direction: column;
     width: 100%;
     border: 1px solid black;
     text-align: left;
     background-color: var(--light-pink);
-    padding: 2rem;
-    border-radius: 1rem;
+    padding: 2.4rem;
+    border-radius: 1.2rem;
+    font-size: 1.2rem;
 }
 
-.login-box input {
+.login-box input, 
+.create-account-box input {
     width: fill;
-    height: 1.5rem;
-    margin-bottom: 1rem;
+    height: 1.8rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
 }
 
-.login-box > form > button {
-    /* width: 5rem; */
-    align-self: flex-end;
+.login-box button, .create-account-box button {
     background-color: #F37C96;
 }
 
+.login-box > form > button {
+    align-self: flex-end;
+}
+
+.create-account-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-to-login {
+    align-self: flex-end;
+}
 
 .create-account-link {
     cursor: pointer;

@@ -28,7 +28,7 @@ const Header = ({appState, setAppState}) => {
     const myArticlesLink = <Link key={1} to={'my-articles'} >My Articles</Link>;
     const reviewsLink = <Link key={2} to={'review'} >Review</Link>;
     const logInLink = <Link key={3} to={'login'}>Log In</Link>;
-    const logOutButton = <button key={4} type="button" onClick={logOut}>Log Out</button>;
+    const logOutButton = <button className="logout looks-like-link" key={4} type="button" onClick={logOut}>Log Out</button>;
 
     const setHeaderOptions = () => {
         if (appState.superUser) {
@@ -38,7 +38,7 @@ const Header = ({appState, setAppState}) => {
             return [homeLink, myArticlesLink, logOutButton];
         }
         else {
-            return [homeLink, logInLink];
+            return logInLink;
         }
     }
 
@@ -46,7 +46,9 @@ const Header = ({appState, setAppState}) => {
 
     return (
         <nav className="header">
-            <h1>Food News</h1>
+            <Link to={'/'}>
+                <h1>Food News</h1>
+            </Link>
             {headers}
         </nav>
     )

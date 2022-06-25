@@ -95,8 +95,10 @@ const CreateAccount = ({appState, setAppState}) => {
                             onChange={handleInput}
                         />
                     </div>
-                    <button type="submit" className="create-account-button">Create Account</button>
-                    <Link className="back-to-login" to={'/login'}>Back to login</Link>
+                    <div className="create-account-bottom">
+                        <Link className="back-to-login" to={'/login'}>Back to login</Link>
+                        <button type="submit" className="create-account-button">Create Account</button>
+                    </div>
                 </form>
             </main>
         </div>

@@ -22,14 +22,18 @@ code {
 		monospace;
 }
 
-h1 {
-	font-size: 2rem;
+h1, h2 {
 	font-weight: 700;
 }
 
+h1 {
+	font-size: 3rem;
+	margin: 0;
+}
+
 h2 {
-	font-size: 1.5rem;
-	font-weight: 700;
+	font-size: 2rem;
+	margin: 1rem;
 }
 
 
@@ -47,11 +51,18 @@ button:hover {
 	filter: brightness(95%);
 }
 
+.looks-like-link {
+	background-color: transparent;
+	border: none;
+	font-weight: 500;
+	transition: 0s;
+}
+
 a {
 	text-decoration: none;
 	color: #000;
 }
 
-a:hover {
-	color: purple;
+a:hover, .looks-like-link:hover {
+	color: #8168b5;
 }
