@@ -1,0 +1,50 @@
+.create-article-input {
+    position: relative;
+    width: var(--main-page-width);
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-article-input .left-side {
+    width: 60%;
+}
+
+.create-article-input .right-side {
+    max-width: 40%;
+}
+
+.create-article-input label {
+    display: inline-block;
+    width: 5rem;
+    vertical-align: top;
+}
+
+.create-article-input #title,
+.create-article-input #body {
+    width: calc(100% - 5rem);
+}
+
+.create-article-input #title {
+    font-size: 1.8rem;
+    height: 2.4rem;
+}
+
+.create-article-input #body,
+.create-article-input #category {
+    font-size: 1.2rem;
+}
+
+.create-article-input #body {
+    resize: vertical;
+    height: 10rem;
+}
+
+.image-preview {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.create-article-input > * > * {
+    padding: 0 1rem 1rem 0;
+}

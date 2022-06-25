@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { handleError } from '../helpers';
+import './../styles/createarticle.css'
 
 const CreateArticle = ({appState}) => {
     const blank = {
@@ -65,66 +66,72 @@ const CreateArticle = ({appState}) => {
 
     return (
         <main>
-            <h2>Create Article</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div>
-                    <label htmlFor="title">Title</label>
-                    <input 
-                        name="title" 
-                        value={state.title} 
-                        type="text" 
-                        id="title" 
-                        required 
-                        onChange={handleInput}/>
+            <form className="create-article-form" onSubmit={handleFormSubmit}>
+            <section className="subheader-row">
+                <div className="subheader-row-content create">
+                    <h2>Create Article</h2>
+                    <button type="button" onClick={() => navigate('/my-articles')}>Discard Draft</button>
+                    <button type="submit" value="DR">Save Draft</button>
+                    {appState.superUser ? 
+                        <button type="submit" value="PU">Save and Publish</button> : 
+                        <button type="submit" value="SU">Save and Submit</button>
+                    }
                 </div>
-                <div>
-                    <label htmlFor="body">Body</label>
-                    <textarea
-                        name="body" 
-                        value={state.body} 
-                        type="text" 
-                        id="body" 
-                        required 
-                        onChange={handleInput}
-                    ></textarea> 
+            </section>
+            <section className="create-article-input">
+                <div className="left-side">
+                    <div>
+                        <label htmlFor="title">Title</label>
+                        <input 
+                            name="title" 
+                            value={state.title} 
+                            type="text" 
+                            id="title" 
+                            required 
+                            onChange={handleInput}/>
+                    </div>
+                    <div>
+                        <label htmlFor="category">Category</label>
+                        <select 
+                            name="category" 
+                            id="category" 
+                            required
+                            onChange={handleInput}> 
+                                <option value="">Select a category</option>
+                                <option value="RC">Recipe</option>
+                                <option value="RS">Restaurants</option>
+                                <option value="FS">Food Science</option>
+                                <option value="DB">Debate</option>
+                                <option value="ST">Stories</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="body">Body</label>
+                        <textarea
+                            name="body" 
+                            value={state.body} 
+                            type="text" 
+                            id="body" 
+                            required 
+                            onChange={handleInput}
+                        ></textarea> 
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="image">Image</label>
-                    <input 
-                        type="file" 
-                        name="image" 
-                        required
-                        onChange={handleImage} />
-                    {state.image && <img src={preview} alt='article' />}
+                <div className="right-side">
+                    <div>
+                        <label htmlFor="image">Image</label>
+                        <input 
+                            type="file" 
+                            name="image" 
+                            id="image"
+                            required
+                            onChange={handleImage} />
+                        {state.image && <img className="image-preview" src={preview} alt='article' />}
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="category">Category</label>
-                    <select 
-                        name="category" 
-                        id="category" 
-                        required
-                        onChange={handleInput}> 
-                            <option value="">Select a category</option>
-                            <option value="RC">Recipe</option>
-                            <option value="RS">Restaurants</option>
-                            <option value="FS">Food Science</option>
-                            <option value="DB">Debate</option>
-                            <option value="ST">Stories</option>
-                    </select>
-                </div>
-
-
-                <button type="button" onClick={() => navigate('/my-articles')}>Discard Draft</button>
-                <button type="submit" value="DR">Save Draft</button>
-                {appState.superUser ? 
-                    <button type="submit" value="PU">Save and Publish</button> : 
-                    <button type="submit" value="SU">Save and Submit</button>
-                }
+            </section>
             </form>
-
         </main>
-        
-        
     )
 }
 
