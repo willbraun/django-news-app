@@ -39,7 +39,7 @@ const Home = () => {
     return (
         <main className="main-home">
             <div className="subheader-row">
-                <div className="home-row-content">
+                <div className="subheader-row-content home">
                     <button type="button" onClick={() => getPubCatArticles('RC')}>Recipes</button>
                     <button type="button" onClick={() => getPubCatArticles('RS')}>Restaurants</button>
                     <button type="button" onClick={() => getPubCatArticles('FS')}>Food Science</button>
@@ -48,7 +48,7 @@ const Home = () => {
                     <button type="button" onClick={() => getPubCatArticles('')}>All</button>
                 </div>
             </div>
-            <section className="section-home">
+            <section className="display-articles">
                 {articleList}
             </section>
             

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { handleError } from './../helpers';
 import Article from './Article';
 
-const Review = () => {
+const Review = ({auth}) => {
     const [state, setState] = useState({
         articles: [],
     })
@@ -22,12 +22,18 @@ const Review = () => {
         getReview();
     }, [])
 
-    const articleList = state.articles.map(article => <Article key={article.id} {...article}/>)
+    const articleList = state.articles.map(article => <Article key={article.id} auth={auth} {...article}/>)
     
     return (
         <main>
-            <h2>Review</h2>
-            {articleList}
+            <div className="subheader-row">
+                <div className="subheader-row-content review">
+                    <h2>Review</h2>
+                </div>
+            </div>
+            <section className="display-articles">
+                {articleList}
+            </section>
         </main>
     )
 }

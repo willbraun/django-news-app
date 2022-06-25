@@ -1,24 +1,15 @@
-.subheader-row {
-    width: 100%;
-    background-color: var(--light-pink);
-    padding: 0.5rem;
-}
-
-.home-row-content {
+.subheader-row-content.home {
     display: flex;
     justify-content: space-around;
 }
 
-.home-row-content > button {
+.subheader-row-content.home > button {
     background-color: transparent;
     border: none;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
-.home-row-content > button:hover {
+.subheader-row-content.home > button:hover {
     text-decoration: underline;
-}
-
-.home-row-content, .section-home {
-    width: var(--main-page-width);
-    margin: auto;
 }

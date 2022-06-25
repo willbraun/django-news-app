@@ -23,13 +23,13 @@ const ReactRouter = ({appState, setAppState}) => {
                     
                     {appState.auth && 
                         <Route path='my-articles'>
-                            <Route index element={<MyArticles appState={appState}/>}/>
+                            <Route index element={<MyArticles auth={appState.auth}/>}/>
                             <Route path='create' element={<CreateArticle appState={appState}/>}/>
                         </Route>
                     }
                     
                     {appState.superUser && 
-                        <Route path='review' element={<Review />}/>
+                        <Route path='review' element={<Review auth={appState.auth}/>}/>
                     }
 
                     <Route path='*' element={<p>Page not found</p>}/>

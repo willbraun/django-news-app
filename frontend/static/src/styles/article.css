@@ -18,3 +18,14 @@
     font-size: 1.3rem;
     font-weight: 700;
 }
+
+.article-top, .article-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.open-details {
+    background-color: var(--lavender);
+    font-size: 1rem;
+    font-weight: 500;
+}

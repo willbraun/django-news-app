@@ -1,8 +1,13 @@
 :root {
 	--border-color: #999;
 	--light-pink: #FFD8D6;
-	--hot-pink: #EE4266;
+	--medium-pink: #F9AAB6;
+	--hot-pink: #F37C96;
+	--purple: #8168b5;
+	--lavender: #DCD3EE;
 	--main-page-width: 80%;
+	--detail-page-width: 50%;
+	--header-height: 4rem;
 }
 
 * {
@@ -41,18 +46,19 @@ p {
 }
 
 
-button {
+button, .looks-like-button {
 	padding: 0.3rem 0.6rem;
 	border-radius: 0.3rem;
 	border: 1px solid #000;
 	font-size: 1.2rem;
-	font-weight: 700;
+    font-weight: 700;
 	cursor: pointer;
 	transition: 0.2s;
 }
 
-button:hover {
-	filter: brightness(95%);
+button:hover, .looks-like-button:hover {
+	filter: brightness(110%);
+	color: #000;
 }
 
 .looks-like-link {
@@ -68,5 +74,5 @@ a {
 }
 
 a:hover, .looks-like-link:hover {
-	color: #8168b5;
+	color: var(--purple)
 }

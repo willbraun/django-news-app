@@ -1,0 +1,33 @@
+.article-detail {
+    position: relative;
+    width: var(--detail-page-width);
+    margin: 1rem auto;
+}
+
+.detail-title {
+    margin: 1rem 0;
+}
+
+.detail-phase {
+    position: absolute;
+    right: 0;
+}
+
+.image-box {
+    position: relative;
+    height: 20rem;
+    width: fit-content;
+    margin: auto;
+}
+
+.image-box img {
+    height: 100%;
+}
+
+.detail-body {
+    margin: 1rem 0;
+}
+
+.detail-updated-at {
+    color: #999
+}

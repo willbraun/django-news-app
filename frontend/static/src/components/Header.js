@@ -45,12 +45,15 @@ const Header = ({appState, setAppState}) => {
     const headers = setHeaderOptions();
 
     return (
-        <nav className="header">
-            <Link to={'/'}>
-                <h1>Food News</h1>
-            </Link>
-            {headers}
-        </nav>
+        <>
+            <nav className="header">
+                <Link to={'/'}>
+                    <h1>Food News</h1>
+                </Link>
+                {headers}
+            </nav>
+            <div className="push-down"></div>
+        </>
     )
 }
 

@@ -4,6 +4,7 @@ import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 import { handleError, phases, categories } from '../helpers';
 import Cookies from 'js-cookie';
 import EditArticle from './EditArticle';
+import './../styles/articledetail.css'
 
 
 const ArticleDetail = ({auth, superUser, authorId}) => {
@@ -95,7 +96,7 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
         return <div>Fetching data...</div>
     }
 
-    const editButton = <Link key={0} to={'edit'}>Edit</Link>;
+    const editButton = <Link className="looks-like-button" key={0} to={'edit'}>Edit</Link>;
     const deleteButton = <button key={1} type="button" onClick={() => deleteArticle()}>Delete</button>;
     const submitButton = <button key={2} type="button" onClick={() => submitArticle()}>Submit</button>;
     const rejectButton = <button key={3} type="button" onClick={() => editorUpdatePhase('RE')}>Reject</button>;
@@ -128,15 +129,29 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
 
     const articleDetailHTML = (
         <main>
-            <div>
-                <h2>{state.title}</h2>
-                {buttonList}
-            </div>
-            <p>{phases[state.phase]}</p>
-            <p>{categories[state.category]}</p>
-            <p>By: {state.author_username}</p>
-            <img src={state.image} alt={state.title} />
-            <p>{state.body}</p>
+            {buttonList && 
+                <div className="subheader-row">
+                    <div className="subheader-row-content detail">
+                        <h2>Modify Article</h2>
+                        {buttonList}
+                    </div>
+                </div>
+            }
+            <section className="article-detail">
+                {(authorId === state.author || superUser) && 
+                    <p className="detail-phase">{phases[state.phase]}</p>
+                }
+                <h2 className="detail-title">{state.title}</h2>
+                <p className="detail-created-at">{state.created_at}</p>
+                <p className="detail-category">Category: {categories[state.category]}</p>
+                <p className="detail-author">By {state.author_username}</p>
+                
+                <div className="image-box">
+                    <img src={state.image} alt={state.title} />
+                </div>
+                <p className="detail-body">{state.body}</p>
+                <p className="detail-updated-at">Last Modified: {state.updated_at}</p>
+            </section>
         </main>
     )
 

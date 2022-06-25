@@ -1,7 +1,0 @@
-.my-articles-row-content {
-    display: flex;
-    justify-content: space-between;
-    width: var(--main-page-width);
-    margin: auto;
-}
-
