@@ -1,0 +1,17 @@
+.main-home {
+    width: 100%;
+    max-width: 50rem;
+    margin: auto;
+}
+
+.category-row {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--light-pink);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.category-row > button {
+    background-color: var(--hot-pink);
+}

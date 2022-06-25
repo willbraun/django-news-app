@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { handleError } from './../helpers';
 import Article from './Article';
+import './../styles/home.css';
 
 const Home = () => {
     const [state, setState] = useState({
@@ -36,9 +37,9 @@ const Home = () => {
     const articleList = state.articles.map(article => <Article key={article.id} {...article}/>)
 
     return (
-        <main>
+        <main className="main-home">
             <h2>Home</h2>
-            <div>
+            <div className="category-row">
                 <button type="button" onClick={() => getPubCatArticles('RC')}>Recipes</button>
                 <button type="button" onClick={() => getPubCatArticles('RS')}>Restaurants</button>
                 <button type="button" onClick={() => getPubCatArticles('FS')}>Food Science</button>

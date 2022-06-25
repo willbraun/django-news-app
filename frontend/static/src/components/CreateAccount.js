@@ -3,7 +3,6 @@ import * as React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { handleError } from "../helpers";
-import './../styles/createaccount.css';
 
 const CreateAccount = ({appState, setAppState}) => {
     const [state, setState] = useState({

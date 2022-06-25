@@ -1,0 +1,10 @@
+.article {
+    height: 30rem;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+}
+
+.article img {
+    height: 100%;
+}
