@@ -1,3 +1,35 @@
+.login-box {
+    /* border: 1px solid var(--border-color); */
+    max-width: 30rem;
+    margin: 5rem auto;
+    text-align: center;
+    /* padding: 2rem; */
+}
+
+.login-box form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid black;
+    text-align: left;
+    background-color: var(--light-pink);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.login-box input {
+    width: fill;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.login-box > form > button {
+    /* width: 5rem; */
+    align-self: flex-end;
+    background-color: #F37C96;
+}
+
+
 .create-account-link {
     cursor: pointer;
     text-decoration: underline;

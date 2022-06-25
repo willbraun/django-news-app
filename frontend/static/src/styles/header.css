@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header > a:last-child {
+    margin-left: auto;
+}
+
+.header > * {
+    margin: 1rem;
+}
