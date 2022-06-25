@@ -37,7 +37,7 @@
 
 .create-article-input #body {
     resize: vertical;
-    height: 10rem;
+    height: 20rem;
 }
 
 .image-preview {

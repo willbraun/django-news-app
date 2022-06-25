@@ -133,7 +133,7 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
             {buttonList && 
                 <div className="subheader-row">
                     <div className="subheader-row-content detail">
-                        <h2>Modify Article</h2>
+                        <h2>Actions</h2>
                         {buttonList}
                     </div>
                 </div>
@@ -156,9 +156,11 @@ const ArticleDetail = ({auth, superUser, authorId}) => {
 
     return (
         <>
-        <Routes>
-            <Route path='edit' element={<EditArticle superUser={superUser} detailState={state} setDetailState={setState}/>}/>
-        </Routes>
+        {auth && 
+            <Routes>
+                <Route path='edit' element={<EditArticle superUser={superUser} detailState={state} setDetailState={setState}/>}/>
+            </Routes>
+        }
 
         {location.pathname.endsWith(`/article/${state.id}/edit`) ? undefined : articleDetailHTML}
         </>

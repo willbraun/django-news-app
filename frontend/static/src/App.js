@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ReactRouter from './components/ReactRouter';
+import { Outlet } from 'react-router-dom';
 import './App.css';
 import './styles/display.css'
 
