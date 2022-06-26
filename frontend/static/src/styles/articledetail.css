@@ -20,9 +20,9 @@
 
 .image-box {
     position: relative;
+    display: flex;
+    justify-content: center;
     height: 20rem;
-    width: fit-content;
-    margin: auto;
 }
 
 .image-box img {
@@ -35,4 +35,15 @@
 
 .detail-updated-at {
     color: #999
+}
+
+@media (max-width: 900px) {
+    .detail-phase {
+        position: relative;
+        text-align: right;
+    }
+    
+    .article-detail {
+        width: 70%;
+    }
 }

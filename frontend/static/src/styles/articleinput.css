@@ -48,3 +48,33 @@
 .create-article-input > * > * {
     padding: 0 1rem 1rem 0;
 }
+
+@media (max-width: 900px) {
+    .create-article-input {
+        flex-direction: column;
+    }
+
+    .create-article-input .left-side,
+    .create-article-input .right-side {
+        width: 100%;
+    }
+
+    .create-article-input #title,
+    .create-article-input #body {
+        width: 100%;
+    }
+
+    .create-article-input label {
+        width: 5rem;
+    }
+
+    .create-article-input #title {
+        height: 1.4rem;
+    }
+    
+    .create-article-input #title,
+    .create-article-input #body,
+    .create-article-input #category {
+    font-size: 1rem;
+}
+}

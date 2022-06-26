@@ -30,3 +30,18 @@
 .push-down {
     padding-bottom: var(--header-height);
 }
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 1.4rem;
+        margin-right: 0
+    }
+
+    .header > a, .header > .looks-like-link {
+        font-size: 1rem;
+    }
+
+    .header > * {
+        margin: 0 0.5rem;
+    }
+}

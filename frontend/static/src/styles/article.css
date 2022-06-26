@@ -1,5 +1,6 @@
 .article {
     width: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -7,7 +8,16 @@
 }
 
 .article img {
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.article .img-box {
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
 
 .article-content {
@@ -17,11 +27,16 @@
 .article .title {
     font-size: 1.3rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 .article-top, .article-bottom {
     display: flex;
     justify-content: space-between;
+}
+
+.article-phase {
+    margin-left: 1rem;
 }
 
 .open-details {

@@ -6,11 +6,13 @@ const Article = ({auth, id, title, author_username, phase, image}) => {
     
     return (
         <article className="article">
-            <img src={image} alt={title} />
+            <div className="img-box">
+                <img src={image} alt={title} />
+            </div>
             <div className="article-content">
                 <div className="article-top">
                     <p className="title">{title}</p>
-                    {auth ? <p>{phases[phase]}</p> : undefined}
+                    {auth ? <p className="article-phase">{phases[phase]}</p> : undefined}
                 </div>
                 <div className="article-bottom">
                     <p className="author">By {author_username}</p>

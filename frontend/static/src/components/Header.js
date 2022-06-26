@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { handleError } from '../helpers';
 import './../styles/header.css';
 
 const Header = ({appState, setAppState}) => {
+
+    const navigate = useNavigate();
 
     const logOut = async () => {
         const options = {
@@ -22,6 +24,7 @@ const Header = ({appState, setAppState}) => {
 
         Cookies.remove("Authorization");
         setAppState({...appState, auth: false, superUser: false, page: 'home'});
+        navigate('');
     }
 
     const homeLink = <Link key={0} to={''} >Home</Link>;

@@ -3,6 +3,8 @@
     height: 3rem;
     background-color: var(--light-pink);
     padding: 0.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .subheader-row-content {
@@ -38,6 +40,10 @@
 
 
 @media (max-width: 900px) {
+    .subheader-row {
+        height: fit-content;
+    }
+    
     .subheader-row-content {
         width: 100%;
     }
@@ -47,4 +53,14 @@
         grid-gap: 1rem;
         width: 70%;
     }
+
+    .subheader-row-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .subheader-row-content > button,
+    .subheader-row-content > .looks-like-button {
+        font-size: 0.9rem;
+        padding: 0.3rem;
+}
 }
