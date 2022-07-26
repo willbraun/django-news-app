@@ -23,7 +23,7 @@ const Header = ({appState, setAppState}) => {
         }
 
         Cookies.remove("Authorization");
-        setAppState({...appState, auth: false, superUser: false, page: 'home'});
+        setAppState({...appState, auth: false, superUser: false});
         navigate('');
     }
 

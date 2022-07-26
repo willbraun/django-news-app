@@ -1,5 +1,4 @@
 from distutils.command.upload import upload
-# from sre_parse import CATEGORIES
 from django.db import models
 from django.conf import settings
 
