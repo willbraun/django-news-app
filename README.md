@@ -2,7 +2,7 @@
 
 This is a news app centered around food, so I called it Food News. It is deployed on Heroku at the link provided in github, shown below as well.
 
-https://django-news-app-will.herokuapp.com/
+See app here - https://django-news-app-will.herokuapp.com/
 
 # Features
 
